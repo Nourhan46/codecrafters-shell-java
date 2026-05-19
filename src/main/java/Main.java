@@ -13,7 +13,10 @@ public class Main {
             String command = scanner.nextLine();
             if(command.equals("exit"))
                 return;
-            System.out.println(command + ": command not found");
+            else if(command.contains("echo"))
+                System.out.println(command.substring(5));
+           else
+               System.out.println(command + ": command not found");
         }
     }
 }
