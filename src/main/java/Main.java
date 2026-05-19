@@ -1,4 +1,5 @@
 import java.io.File;
+import java.nio.file.Path;
 import java.util.Scanner;
 
 
@@ -19,7 +20,7 @@ public class Main {
             else if (command.startsWith("type"))
             { int f=1;
                 String c= command.substring(5);
-                if(c.equals("exit") || c.equals("type") || c.equals("echo") || c.equals("pwd") ) {
+                if(c.equals("exit") || c.equals("type") || c.equals("echo") || c.equals("pwd")  || c.equals("cd")) {
                     System.out.println(c + " " + "is a shell builtin");
                     f=0;
                 }
@@ -40,7 +41,13 @@ public class Main {
                     System.out.println(c + " "+"not found");
 
             }
-            else if(command.contains("echo"))
+            else if (command.startsWith("cd"))
+            {
+                String path = command.substring(4);
+                System.setProperty("user.dir",path);
+
+            }
+            else if(command.startsWith("echo"))
                 System.out.println(command.substring(5));
             else if (command.startsWith("pwd"))
             {
