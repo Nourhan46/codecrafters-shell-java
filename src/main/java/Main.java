@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         // TODO: Uncomment the code below to pass the first stage
         String path_commands = System.getenv("PATH");
-        String path_command[] = path_commands.split(":");
+        String[] path_command = path_commands.split(":");
         while(true) {
 
 
@@ -63,7 +63,7 @@ public class Main {
 
             }
             else if(command.startsWith("echo"))
-                System.out.println(command.substring(5));
+                System.out.println(command.substring(5).replaceAll("'",""));
             else if (command.startsWith("pwd"))
             {
                 String currentPath=System.getProperty("user.dir");
