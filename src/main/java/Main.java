@@ -62,7 +62,7 @@ public class Main {
 
 
             }
-            else if(command.startsWith("echo"))
+            else if(command.startsWith("echo") || command.startsWith(" echo"))
                 System.out.println(command.substring(5).replaceAll("'",""));
             else if (command.startsWith("pwd"))
             {
