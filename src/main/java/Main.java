@@ -46,7 +46,7 @@ public class Main {
                 String path = command.substring(3);
                 if(path.equals("~"))
                 {
-                    path = System.getProperty("user.home");
+                    path = System.getenv("HOME");
                 }
                 Path currentPath = Path.of(System.getProperty("user.dir"));
                 Path newPath= currentPath.resolve(path).normalize();
