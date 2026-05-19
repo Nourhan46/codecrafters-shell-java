@@ -32,13 +32,32 @@ public class Main {
                             System.out.println(c + " is " + file.getAbsolutePath());
                         }
                     }
+
                 }
+
                 if(f==1)
                     System.out.println(c + " "+"not found");
 
             }
             else if(command.contains("echo"))
                 System.out.println(command.substring(5));
+            int program_found=0;
+            String[] commandParts = command.split(" ");
+            String programName = commandParts[0];
+            for (int i = 0; i < path_command.length; i++) {
+                File file = new File(path_command[i], programName);
+
+                if (file.exists() && file.canExecute()) {
+                    program_found= 0;
+                    break;
+                }
+            }
+            if (program_found == 0) {
+                ProcessBuilder processBuilder = new ProcessBuilder(commandParts);
+                processBuilder.inheritIO();
+                Process process = processBuilder.start();
+                process.waitFor();
+            }
            else
                System.out.println(command + ": command not found");
         }
