@@ -1,10 +1,12 @@
+import java.io.File;
 import java.util.Scanner;
 
 
 public class Main {
     public static void main(String[] args) throws Exception {
         // TODO: Uncomment the code below to pass the first stage
-
+        String path_commands = System.getenv("PATH");
+        String path_command[] = path_commands.split(":");
         while(true) {
 
 
@@ -15,11 +17,21 @@ public class Main {
                 return;
 
             else if (command.contains("type"))
-            {
+            { int f=1;
                 String c= command.substring(5);
-                if(c.equals("exit") || c.equals("type") || c.equals("echo") )
-                    System.out.println(c +" "+"is a shell builtin");
-                else
+                if(c.equals("exit") || c.equals("type") || c.equals("echo") ) {
+                    System.out.println(c + " " + "is a shell builtin");
+                    f=0;
+                }
+
+                for (int i = 0; i < path_command.length; i++) {
+                    File file = new File(path_command[i], command);
+                    if (file.exists() && file.canExecute()) {
+                        f=0;
+                        System.out.println( command + " is " + file.getAbsolutePath());
+                    }
+                }
+                if(f==1)
                     System.out.println(c + " "+"not found");
 
             }
