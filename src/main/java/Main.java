@@ -13,6 +13,15 @@ public class Main {
             String command = scanner.nextLine();
             if(command.equals("exit"))
                 return;
+
+            else if (command.contains("type"))
+            {
+                if(command.contains("echo") || command.contains("exit"))
+                    System.out.println(command.substring(5) +" "+"is a shell builtin");
+                else
+                    System.out.println(command.substring(5) + " "+"not found");
+
+            }
             else if(command.contains("echo"))
                 System.out.println(command.substring(5));
            else
