@@ -23,13 +23,14 @@ public class Main {
                     System.out.println(c + " " + "is a shell builtin");
                     f=0;
                 }
-
-                for (int i = 0; i < path_command.length; i++) {
-                    File file = new File(path_command[i], c);
-                    System.out.println(path_command[i]);
-                    if (file.exists() && file.canExecute()) {
-                        f=0;
-                        System.out.println( c + " is " + file.getAbsolutePath());
+                if(f==1) {
+                    for (int i = 0; i < path_command.length; i++) {
+                        File file = new File(path_command[i], c);
+                        System.out.println(path_command[i]);
+                        if (file.exists() && file.canExecute()) {
+                            f = 0;
+                            System.out.println(c + " is " + file.getAbsolutePath());
+                        }
                     }
                 }
                 if(f==1)
