@@ -44,7 +44,17 @@ public class Main {
             else if (command.startsWith("cd"))
             {
                 String path = command.substring(3);
-                System.setProperty("user.dir",path);
+                Path currentPath = Path.of(System.getProperty("user.dir"));
+                Path newPath= currentPath.resolve(path).normalize();
+                File dir = newPath.toFile();
+                if(dir.exists() && dir.isDirectory())
+                {
+                    System.setProperty("user.dir",newPath.toString());
+                }
+                else {
+                    System.out.println("cd: " + path + ": No such file or directory");
+                }
+
 
             }
             else if(command.startsWith("echo"))
