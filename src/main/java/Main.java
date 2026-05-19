@@ -47,7 +47,11 @@ public class Main {
                 Path currentPath = Path.of(System.getProperty("user.dir"));
                 Path newPath= currentPath.resolve(path).normalize();
                 File dir = newPath.toFile();
-                if(dir.exists() && dir.isDirectory())
+                if(path.equals("~"))
+                {
+                    System.setProperty("user.dir","user.home");
+                }
+               else if(dir.exists() && dir.isDirectory())
                 {
                     System.setProperty("user.dir",newPath.toString());
                 }
