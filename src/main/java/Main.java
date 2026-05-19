@@ -42,6 +42,11 @@ public class Main {
             }
             else if(command.contains("echo"))
                 System.out.println(command.substring(5));
+            else if (command.startsWith("pwd"))
+            {
+                String currentPath=System.getProperty("user.dir");
+                System.out.println(currentPath);
+            }
             else {
                 int program_found = 0;
                 String[] commandParts = command.split(" ");
@@ -62,6 +67,7 @@ public class Main {
                 } else
                     System.out.println(command + ": command not found");
             }
+
         }
     }
 }
