@@ -43,7 +43,7 @@ public class Main {
             }
             else if (command.startsWith("cd"))
             {
-                String path = command.substring(4);
+                String path = command.substring(3);
                 System.setProperty("user.dir",path);
 
             }
