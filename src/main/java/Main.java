@@ -16,10 +16,10 @@ public class Main {
             if(command.equals("exit"))
                 return;
 
-            else if (command.contains("type"))
+            else if (command.startsWith("type"))
             { int f=1;
                 String c= command.substring(5);
-                if(c.equals("exit") || c.equals("type") || c.equals("echo") ) {
+                if(c.equals("exit") || c.equals("type") || c.equals("echo") || c.equals("pwd") ) {
                     System.out.println(c + " " + "is a shell builtin");
                     f=0;
                 }
