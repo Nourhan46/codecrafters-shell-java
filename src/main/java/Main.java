@@ -44,14 +44,15 @@ public class Main {
             else if (command.startsWith("cd"))
             {
                 String path = command.substring(3);
+                if(path.equals("~"))
+                {
+                    path = System.getProperty("user.home");
+                }
                 Path currentPath = Path.of(System.getProperty("user.dir"));
                 Path newPath= currentPath.resolve(path).normalize();
                 File dir = newPath.toFile();
-                if(path.equals("~"))
-                {
-                    System.setProperty("user.dir","user.home");
-                }
-               else if(dir.exists() && dir.isDirectory())
+
+               if(dir.exists() && dir.isDirectory())
                 {
                     System.setProperty("user.dir",newPath.toString());
                 }
