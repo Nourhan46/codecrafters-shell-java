@@ -48,11 +48,11 @@ public class Main {
                 File file = new File(path_command[i], programName);
 
                 if (file.exists() && file.canExecute()) {
-                    program_found= 0;
+                    program_found= 1;
                     break;
                 }
             }
-            if (program_found == 0) {
+            if (program_found == 1) {
                 ProcessBuilder processBuilder = new ProcessBuilder(commandParts);
                 processBuilder.inheritIO();
                 Process process = processBuilder.start();
