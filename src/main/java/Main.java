@@ -64,11 +64,20 @@ public class Main {
             }
             else if(command.startsWith("echo") || command.startsWith(" echo"))
             {
-                String text = command.substring(5).trim().replaceAll("'","");
-                System.out.println(text);
+                if(!command.contains("'"))
+                {
+                    String text = command.substring(5).trim().replaceAll("'","");
 
-//                String [] words =text.split(" +");
-//                System.out.println(String.join(" ", words));
+                    String [] words =text.split(" +");
+               System.out.println(String.join(" ", words));
+
+                }
+                else {
+                    String text = command.substring(5).trim().replaceAll("'", "");
+                    System.out.println(text);
+                }
+
+//
 
 
             }
