@@ -1,4 +1,5 @@
 import java.io.File;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Scanner;
 
@@ -85,6 +86,21 @@ public class Main {
             {
                 String currentPath=System.getProperty("user.dir");
                 System.out.println(currentPath);
+            }
+            else if (command.startsWith("cat"))
+            {
+                String path= command.substring(5);
+                String  [] FilePaths = path.split("' '");
+//                System.out.println(FilePaths[0]);
+//                System.out.println(FilePaths[1]);
+                for(int i=0;i<FilePaths.length;i++)
+                {
+
+                    String content = Files.readString(Path.of(FilePaths[i].replaceAll("'","")));
+                    System.out.println(content);
+                }
+
+
             }
             else {
                 int program_found = 0;
