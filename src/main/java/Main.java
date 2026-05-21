@@ -65,16 +65,16 @@ public class Main {
             }
             else if(command.startsWith("echo") || command.startsWith(" echo"))
             {
-                if(!command.contains("'"))
+                if(!command.contains("'") || !command.contains("\"") )
                 {
-                    String text = command.substring(5).trim().replaceAll("'","");
+                    String text = command.substring(5).trim().replaceAll("'","").replaceAll("\"", "");
 
                     String [] words =text.split(" +");
                System.out.println(String.join(" ", words));
 
                 }
                 else {
-                    String text = command.substring(5).trim().replaceAll("'", "");
+                    String text = command.substring(5).trim().replaceAll("'", "").replaceAll("\"", "");
                     System.out.println(text);
                 }
 
@@ -90,13 +90,13 @@ public class Main {
             else if (command.startsWith("cat"))
             {
                 String path= command.substring(5);
-                String  [] FilePaths = path.split("' '");
+                String  [] FilePaths = path.split(" ");
 //                System.out.println(FilePaths[0]);
 //                System.out.println(FilePaths[1]);
                 for(int i=0;i<FilePaths.length;i++)
                 {
 
-                    String content = Files.readString(Path.of(FilePaths[i].replaceAll("'","")));
+                    String content = Files.readString(Path.of(FilePaths[i].replaceAll("'","").replaceAll("\"", "")));
                     System.out.print(content);
                 }
 
