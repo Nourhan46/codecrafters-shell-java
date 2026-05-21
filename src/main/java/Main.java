@@ -97,7 +97,7 @@ public class Main {
                 {
 
                     String content = Files.readString(Path.of(FilePaths[i].replaceAll("'","")));
-                    System.out.println(content);
+                    System.out.print(content +" ");
                 }
 
 
